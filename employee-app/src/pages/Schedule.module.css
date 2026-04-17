@@ -1,0 +1,179 @@
+.page {
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+}
+
+/* ── Header ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, #2051E5 0%, #3B82F6 100%);
+  padding: 40px 20px 20px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+.logo { font-size: 1.2rem; font-weight: 800; margin-bottom: 12px; }
+.logoW { color: #fff; }
+.logoC { color: #FCD34D; }
+.pageTitle { font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0; }
+
+.body { padding: 20px; }
+
+/* ── Search Row ── */
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.searchBar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f1f1f1;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+.searchInput {
+  border: none; outline: none; font-size: 1rem;
+  color: #64748b; background: transparent; width: 100%;
+}
+.filterBtn {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: #f1f1f1;
+  border-radius: 12px;
+  border: none;
+  color: #334155;
+  cursor: pointer;
+}
+
+/* ── Cards ── */
+.cardList { display: flex; flex-direction: column; gap: 16px; }
+
+.schedCard {
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cardHot {
+  background: #2051E5;
+  color: #fff;
+}
+.cardDefault {
+  background: #f6f6f6;
+  color: #1e293b;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.typeLabel { font-size: 1.1rem; font-weight: 700; }
+.dateWrap { text-align: right; }
+.smallLabel { font-size: 0.9rem; margin-right: 4px; opacity: 0.8; font-weight: 500; }
+.dateVal { font-size: 1.1rem; font-weight: 700; }
+
+.phone { font-size: 1.2rem; font-weight: 500; }
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.userRow {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+}
+.userName { font-size: 0.95rem; font-weight: 600; }
+
+/* ── Small Filter Pop-up (Floating) ── */
+.popover {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  z-index: 200;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  padding: 16px;
+  width: 140px;
+  animation: popUp 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+
+@keyframes popUp {
+  from { opacity: 0; transform: translateY(-10px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.popTitle { font-size: 1.1rem; font-weight: 700; color: #475569; margin-bottom: 12px; }
+
+.selectBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.selectLabel { font-size: 1rem; font-weight: 600; color: #334155; }
+
+.dropdown {
+  position: absolute;
+  top: 90px;
+  left: 16px;
+  right: 16px;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+  z-index: 10;
+}
+.opt {
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+}
+.opt:hover { background: #f8fafc; }
+.optActive { color: #2051E5; background: #eff6ff; }
+
+.saveBtn {
+  width: 100%;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 99px;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.empty { text-align: center; padding: 40px; color: #94a3b8; font-weight: 500; }
+

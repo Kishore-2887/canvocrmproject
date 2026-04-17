@@ -1,0 +1,253 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 40px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.breadHome { color: #616161; }
+.breadSep { color: #aaaaaa; }
+.breadCurrent { color: #616161; }
+
+.kpiGrid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.kpiCard {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.kpiTextWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpiLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #616161;
+  margin-bottom: 4px;
+}
+
+.kpiValue {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #111111;
+}
+
+.midRow {
+  display: flex;
+  gap: 16px;
+}
+
+.chartCard {
+  flex: 2.2;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+}
+
+.chartWrap {
+  flex: 1;
+  height: 200px;
+  padding: 16px 24px;
+}
+
+.cardFooterText {
+  padding: 0 24px 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #616161;
+}
+
+.activityCard {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardHeader {
+  padding: 20px 24px;
+}
+
+.activityList {
+  padding: 0 24px 24px;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.activityItem {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+.activityItem:last-child {
+  margin-bottom: 0;
+}
+
+.activityDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a0a0a0;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.activityText {
+  font-size: 0.82rem;
+  color: #616161;
+  line-height: 1.4;
+}
+
+.emptyActivity {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.tableSection {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableHeader {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.tableTitle {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0 12px;
+  width: 240px;
+  transition: all 0.2s;
+}
+
+.searchBar:focus-within {
+  border-color: #3b82f6;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  font-size: 0.82rem;
+  color: #111;
+  width: 100%;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.tableContainer {
+  overflow-y: auto;
+  max-height: 320px;
+}
+
+.emptySearch {
+  padding: 30px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+  border-top: 1px solid #dcdcdc;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataTable th {
+  text-align: center;
+  padding: 18px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #616161;
+  border-bottom: 1px solid #dcdcdc;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+.dataTable th:first-child, .dataTable td:first-child { text-align: left; padding-left: 24px; }
+.dataTable th:last-child, .dataTable td:last-child { padding-right: 24px; }
+
+.dataTable td {
+  padding: 16px 12px;
+  font-size: 0.82rem;
+  color: #111;
+  border-bottom: 1px solid #dcdcdc;
+  text-align: center;
+}
+
+.dataTable tr:last-child td { border-bottom: none; }
+
+.tagId {
+  background: #eff1f5;
+  color: #616161;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.statusActive, .statusInactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.statusActive { color: #10B981; }
+.statusInactive { color: #EF4444; }
+
+.dotGreen { width: 6px; height: 6px; border-radius: 50%; background: #10B981; }
+.dotRed { width: 6px; height: 6px; border-radius: 50%; background: #EF4444; }

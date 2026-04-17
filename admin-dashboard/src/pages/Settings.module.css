@@ -1,0 +1,124 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 40px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.breadHome { color: #616161; }
+.breadSep { color: #aaaaaa; }
+.breadCurrent { color: #616161; }
+
+.card {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabHeader {
+  display: flex;
+  padding: 20px 30px 0;
+  border-bottom: 1.5px solid #eeeeee;
+}
+
+.tabItem {
+  padding: 0 10px 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #616161;
+  cursor: pointer;
+  position: relative;
+}
+
+.activeTab {
+  color: #111;
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #616161;
+}
+
+.form {
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #616161;
+}
+
+.formInput {
+  width: 100%;
+  border: 1.5px solid #aaaaaa;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #111;
+  outline: none;
+  background: transparent;
+}
+
+.formInput:focus {
+  border-color: #3b82f6;
+}
+
+.formInput:disabled {
+  background: #f9fafb;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btnSave {
+  background: #dcdcdc;
+  color: #616161;
+  border: none;
+  padding: 12px 64px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnSave:hover {
+  background: #cfcfcf;
+}
+
+.btnSave:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

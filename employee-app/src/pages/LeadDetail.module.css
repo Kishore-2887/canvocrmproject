@@ -1,0 +1,31 @@
+.page { min-height: 100vh; background: var(--bg); }
+.header {
+  background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+  padding: 20px 20px 40px;
+  position: relative;
+}
+.backBtn { color: rgba(255,255,255,0.85); padding: 4px; margin-bottom: 16px; display: inline-flex; }
+.backBtn:hover { color: white; }
+.headerContent { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.leadAvatar { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.2); color: white; font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 3px solid rgba(255,255,255,0.4); }
+.leadName { font-size: 1.2rem; font-weight: 800; color: white; letter-spacing: -0.02em; }
+.leadEmail { font-size: 0.82rem; color: rgba(255,255,255,0.75); }
+.badges { display: flex; gap: 8px; }
+
+/* Cards */
+.infoCard, .editCard { background: white; border-radius: var(--radius); box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid var(--border); margin-bottom: 16px; padding: 18px; margin-top: -20px; }
+.infoCard { margin-top: -24px; }
+.cardTitle { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.06em; }
+.infoRow { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #F8FAFC; }
+.infoRow:last-child { border-bottom: none; }
+.infoLabel { font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
+.infoValue { font-size: 0.88rem; color: var(--text-primary); font-weight: 600; text-align: right; }
+
+/* Edit form */
+.editForm { display: flex; flex-direction: column; gap: 16px; }
+.typeButtons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.typeBtn { padding: 10px 6px; border-radius: 10px; font-size: 0.82rem; font-weight: 600; border: 2px solid var(--border); background: white; color: var(--text-secondary); transition: all 0.15s; }
+.typeBtn:active { transform: scale(0.96); }
+.typeBtnActive.typeHot { background: var(--hot-bg); color: var(--hot-text); border-color: var(--hot-text); }
+.typeBtnActive.typeWarm { background: var(--warm-bg); color: var(--warm-text); border-color: var(--warm-text); }
+.typeBtnActive.typeCold { background: var(--cold-bg); color: var(--cold-text); border-color: var(--cold-text); }

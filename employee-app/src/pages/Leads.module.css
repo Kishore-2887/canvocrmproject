@@ -1,0 +1,162 @@
+.page {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+}
+
+/* ── Header: Blue Gradient ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, #2051E5 0%, #3B82F6 100%);
+  padding: 40px 20px 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.logo { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; }
+.logoW { color: #fff; }
+.logoC { color: #FCD34D; } /* Matches yellow CRM text in screenshot */
+.pageTitle { font-size: 1.4rem; font-weight: 700; color: #fff; margin: 0; }
+
+/* ── Body ── */
+.body { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+
+/* ── Search: Grey pill ── */
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #E2E8F0;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+.searchInput {
+  border: none; outline: none; font-size: 1rem;
+  color: #475569; background: transparent; width: 100%;
+}
+.empty { text-align: center; padding: 40px; color: #94a3b8; }
+
+/* ── Lead Card ── */
+.cardList { display: flex; flex-direction: column; gap: 16px; }
+
+.leadCard {
+  position: relative;
+  background: #f1f1f1;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  overflow: visible;
+  min-height: 190px;
+}
+
+/* Vertical Status Bar on left - Pill style */
+.statusBar {
+  position: absolute;
+  left: 0; top: 18%; bottom: 18%;
+  width: 8px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.cardRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.cardLeft { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; padding-right: 90px; }
+.leadName { font-size: 1.1rem; font-weight: 850; color: #1e293b; margin: 0; }
+.leadEmail { font-size: 0.88rem; font-weight: 500; color: #64748b; margin-bottom: 8px; }
+
+.dateRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 0.95rem;
+  font-weight: 650;
+  margin-top: 40px;
+}
+
+/* Right: Large Donut - Absolute position to top right */
+.cardRight { 
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  flex-shrink: 0; 
+}
+
+/* ── Action Icons: Blue Outline ── */
+.iconRow {
+  position: absolute;
+  right: 24px; bottom: 24px;
+  display: flex; gap: 14px;
+}
+.iconBtn {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #2051E5;
+  background: transparent;
+  color: #2051E5;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.iconBtn svg { width: 18px; height: 18px; }
+.iconBtn:hover { background: #eff6ff; }
+.iconActive { background: #2051E5; color: #fff; }
+
+/* ── Floating Popovers (Small UI) ── */
+.popover {
+  position: absolute;
+  z-index: 100;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+  padding: 16px;
+  animation: popUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popUp {
+  from { opacity: 0; transform: translateY(10px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.typePopover {
+  width: 90px;
+  right: 100px; bottom: 65px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.typeItem {
+  width: 100%; border: none; border-radius: 8px;
+  padding: 8px; font-weight: 700; font-size: 0.85rem;
+  cursor: pointer; text-align: center;
+}
+
+.statusPopover {
+  width: 160px;
+  right: 24px; bottom: 65px;
+}
+.popHeadWrap {
+  margin-bottom: 15px;
+}
+.popHead { font-size: 1.1rem; font-weight: 700; color: #475569; }
+
+.popInput {
+  width: 100%; padding: 12px; border: 1.5px solid #e2e8f0;
+  border-radius: 10px; font-size: 1rem; margin-bottom: 15px;
+  outline: none; color: #334155; font-weight: 600;
+}
+.popInput::placeholder { color: #94a3b8; }
+
+.saveBtn {
+  width: 100%; background: #333; color: #fff; border: none;
+  border-radius: 99px; padding: 12px; font-weight: 700; font-size: 0.95rem;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.saveBtn:active { opacity: 0.8; }
+

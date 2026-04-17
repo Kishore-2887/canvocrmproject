@@ -1,0 +1,193 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 40px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.breadHome { color: #616161; }
+.breadSep { color: #aaaaaa; }
+.breadCurrent { color: #616161; }
+
+.btnPill {
+  background: #dcdcdc;
+  color: #616161;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+.btnPill:hover { background: #cfcfcf; }
+
+.tableContainer {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataTable th {
+  text-align: center;
+  padding: 18px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #616161;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.dataTable td {
+  padding: 16px 12px;
+  font-size: 0.82rem;
+  color: #111;
+  border-bottom: 1px solid #dcdcdc;
+  text-align: center;
+}
+
+.dataTable tr:last-child td { border-bottom: none; }
+
+.tagId {
+  background: #eff1f5;
+  color: #616161;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.statusActive, .statusInactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.statusActive { color: #10B981; }
+.statusInactive { color: #EF4444; }
+
+.dotGreen { width: 6px; height: 6px; border-radius: 50%; background: #10B981; }
+.dotRed { width: 6px; height: 6px; border-radius: 50%; background: #EF4444; }
+
+.customCheck {
+  appearance: none;
+  width: 16px; height: 16px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+.customCheck:checked {
+  background: #fff;
+}
+.customCheck:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #111;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.menuWrap { position: relative; }
+.menuBtn {
+  background: none; border: none;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 4px; color: #a0a0a0;
+  cursor: pointer;
+}
+.menuBtn:hover { background: #f0f0f0; color: #222; }
+
+.dropdown {
+  position: absolute; right: 0; top: calc(100% + 4px);
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1); z-index: 100;
+  min-width: 120px; overflow: hidden;
+}
+.dropdown button {
+  display: flex; align-items: center; gap: 8px; padding: 10px 16px;
+  width: 100%; font-size: 0.8rem; color: #374151; cursor: pointer;
+  border: none; background: none; font-weight: 600;
+}
+.dropdown button:hover { background: #f9fafb; }
+.deleteOpt { color: #ef4444 !important; }
+.deleteOpt:hover { background: #fef2f2 !important; }
+
+/* Pagination */
+.btnPageBoundary {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  color: #616161;
+  cursor: pointer;
+}
+.btnPageBoundary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btnPageNum {
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  color: #616161;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btnPageNumActive {
+  background: #eaeff4;
+  color: #111;
+  font-weight: 700;
+}
+.pageSep {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modals */
+.modalHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.modalTitle { font-size: 1.1rem; font-weight: 700; color: #111; }
+.modalClose { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #111; }
+.formGroup { margin-bottom: 16px; }
+.formLabel { display: block; font-size: 0.85rem; color: #616161; margin-bottom: 6px; }
+.formInput { width: 100%; border: 1px solid #dcdcdc; border-radius: 8px; padding: 10px 14px; font-size: 0.88rem; outline: none; }
+.modalFooter { display: flex; justify-content: flex-start; margin-top: 24px; }
+.btnSave {
+  background: #dcdcdc;
+  color: #616161;
+  border: none;
+  padding: 10px 32px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}

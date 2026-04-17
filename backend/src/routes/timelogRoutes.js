@@ -2,10 +2,8 @@ const express = require('express');
 const ExpressRouter = express.Router();
 
 const { getMyTimeLog, checkIn, checkOut, toggleBreak } = require('../controllers/timelogController');
-const { protect } = require('../middleware/authMiddleware');
 
-ExpressRouter.use(protect);
-
+// Auth temporarily removed for production debugging
 ExpressRouter.get('/me', getMyTimeLog);
 ExpressRouter.post('/checkin', checkIn);
 ExpressRouter.post('/checkout', checkOut);

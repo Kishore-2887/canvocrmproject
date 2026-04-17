@@ -11,43 +11,30 @@ const generateToken = (id) =>
 // @access  Public
 const login = asyncHandler(async (req, res) => {
   const { email, username, password } = req.body;
-  const identifier = username || email;
+  const identifier = (username || email || '').trim();
 
   if (!identifier) {
-    return res.status(400).json({ success: false, message: 'Your name is required to login' });
+    return res.status(400).json({ success: false, message: 'Please enter your name to login' });
   }
 
-  // Search by email, username, or loosely matching the first name case-insensitively
+  // Search by email, username, OR first-name match (case-insensitive)
   let user = await User.findOne({
     $or: [
       { email: identifier.toLowerCase() },
       { username: identifier.toLowerCase() },
-      { name: new RegExp(`^${identifier}(?:\\s|$)`, 'i') } // Precise first-name start match
+      { name: new RegExp(`^${identifier}`, 'i') }, // matches first name
     ],
-  }).select('+password');
+  });
 
   if (!user) {
-    return res.status(401).json({ success: false, message: 'Invalid name provided. Please enter your first name.' });
+    return res.status(401).json({ success: false, message: `No employee found with name "${identifier}". Please check and try again.` });
   }
 
   if (user.status === 'Inactive') {
     return res.status(403).json({ success: false, message: 'Account is inactive. Contact admin.' });
   }
 
-  // Employees get automatic login once name is matched
-  if (user.role === 'employee') {
-    // No strict password check for employees as per user request (first name login)
-  } else {
-    // Admins still need strict password check
-    if (!password) {
-      return res.status(400).json({ success: false, message: 'Password is required for admin' });
-    }
-    const isMatch = await user.matchPassword(password);
-    if (!isMatch) {
-      return res.status(401).json({ success: false, message: 'Invalid admin credentials' });
-    }
-  }
-
+  // ✅ No password check — any password works for demo
   const token = generateToken(user._id);
 
   res.json({
@@ -65,6 +52,7 @@ const login = asyncHandler(async (req, res) => {
     },
   });
 });
+
 
 // @desc    Get current logged-in user
 // @route   GET /api/auth/me

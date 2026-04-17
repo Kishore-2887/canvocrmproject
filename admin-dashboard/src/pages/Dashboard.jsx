@@ -95,20 +95,28 @@ export default function Dashboard() {
 
   const chartData = {
     labels: last14.map(d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short' })),
-    datasets: [{
-      label: 'Conversion Rate %',
-      data: last14.map(d => {
-        const item = dayMap[d];
-        if (!item || !item.assigned) return 0;
-        return Number(((item.closed / item.assigned) * 100).toFixed(1));
-      }),
-      backgroundColor: '#3B82F6',
-      hoverBackgroundColor: '#2563EB',
-      borderRadius: 6,
-      borderSkipped: false,
-      barThickness: 14,
-    }],
+    datasets: [
+      {
+        label: 'Assigned Leads',
+        data: last14.map(d => dayMap[d]?.assigned || 0),
+        backgroundColor: '#9CA3AF',
+        hoverBackgroundColor: '#6B7280',
+        borderRadius: 6,
+        borderSkipped: false,
+        barThickness: 12,
+      },
+      {
+        label: 'Closed Leads',
+        data: last14.map(d => dayMap[d]?.closed || 0),
+        backgroundColor: '#D1D5DB',
+        hoverBackgroundColor: '#9CA3AF',
+        borderRadius: 6,
+        borderSkipped: false,
+        barThickness: 12,
+      },
+    ],
   };
+
 
   const chartOptions = {
     responsive: true, maintainAspectRatio: false,

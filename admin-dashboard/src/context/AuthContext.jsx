@@ -16,6 +16,9 @@ export function AuthProvider({ children }) {
 
     const tryAutoLogin = async () => {
       try {
+        // Wait 2 seconds for Render backend to wake up if sleeping
+        await new Promise(r => setTimeout(r, 2000));
+        
         const res = await login({ email: ADMIN_EMAIL, password: ADMIN_PASSWORD });
         localStorage.setItem('crm_token', res.data.token);
         setReady(true);

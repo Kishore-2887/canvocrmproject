@@ -68,15 +68,24 @@ const login = asyncHandler(async (req, res) => {
 
 // @desc    Get current logged-in user
 // @route   GET /api/auth/me
-// @access  Protected
+// @access  Public (auth removed)
 const getMe = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
+  // Extract user from token if present, otherwise return first admin
+  let user;
+  const token = req.headers.authorization?.split(' ')[1];
+  if (token) {
+    try {
+      const decoded = require('jsonwebtoken').verify(token, process.env.JWT_SECRET);
+      user = await User.findById(decoded.id);
+    } catch (e) { /* invalid token — fall through */ }
+  }
+  if (!user) user = await User.findOne({ role: 'admin' });
   res.json({ success: true, data: user });
 });
 
 // @desc    Update own profile
 // @route   PUT /api/auth/me
-// @access  Protected
+// @access  Public (auth removed)
 const updateMe = asyncHandler(async (req, res) => {
   const allowedFields = ['name', 'language'];
   const updates = {};
@@ -84,20 +93,24 @@ const updateMe = asyncHandler(async (req, res) => {
     if (req.body[f] !== undefined) updates[f] = req.body[f];
   });
 
-  if (req.body.password) {
-    // Re-save to trigger pre-save hook for hashing
-    const user = await User.findById(req.user._id).select('+password');
-    user.password = req.body.password;
-    Object.assign(user, updates);
-    await user.save();
-    return res.json({ success: true, data: user });
+  let userId = req.user?._id;
+  if (!userId) {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (token) {
+      try {
+        const decoded = require('jsonwebtoken').verify(token, process.env.JWT_SECRET);
+        userId = decoded.id;
+      } catch (e) { /* ignore */ }
+    }
+  }
+  if (!userId) {
+    const admin = await User.findOne({ role: 'admin' });
+    userId = admin?._id;
   }
 
-  const user = await User.findByIdAndUpdate(req.user._id, updates, {
-    new: true,
-    runValidators: true,
-  });
+  const user = await User.findByIdAndUpdate(userId, updates, { new: true, runValidators: true });
   res.json({ success: true, data: user });
 });
+
 
 module.exports = { login, getMe, updateMe };

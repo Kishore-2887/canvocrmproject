@@ -13,11 +13,14 @@ connectDB();
 
 const app = express();
 
-// Middleware
+// ✅ Allow ALL origins — no auth required for demo
 app.use(cors({
-  origin: ['http://localhost:3001', 'http://localhost:3002'],
-  credentials: true,
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: false,
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

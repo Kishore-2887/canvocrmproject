@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const API_URL = 'https://canvo-backend.onrender.com';
+
 const api = axios.create({
-  baseURL: 'https://canvo-backend.onrender.com/api',
+  baseURL: `${API_URL}/api`,
   headers: { 'Content-Type': 'application/json' },
 });
 

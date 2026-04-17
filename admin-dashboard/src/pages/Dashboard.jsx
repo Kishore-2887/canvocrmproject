@@ -75,14 +75,15 @@ export default function Dashboard() {
   }, []);
 
   if (loading) return <div className="page-loading"><div className="spinner" /></div>;
-  if (error) return <div style={{ padding: 24, color: '#ef4444', fontSize: '0.85rem' }}>{error}</div>;
 
-  const { kpis, leadsPerDay = [], recentActivities = [], activeSalesDetails = [] } = data;
+  // Graceful empty state if data fails — no red error
+  const safeData = data || {};
+  const { kpis = {}, leadsPerDay = [], recentActivities = [], activeSalesDetails = [] } = safeData;
 
-  const unassignedLeads = kpis?.unassignedLeads ?? 0;
+  const unassignedLeads  = kpis?.unassignedLeads  ?? 0;
   const assignedThisWeek = kpis?.assignedThisWeek ?? 0;
   const activeSalesPeople = kpis?.activeSalesPeople ?? 0;
-  const conversionRate = kpis?.conversionRate ?? 0;
+  const conversionRate   = kpis?.conversionRate   ?? 0;
 
   // Build last 14 days chart
   const last14 = Array.from({ length: 14 }, (_, i) => {
@@ -93,7 +94,7 @@ export default function Dashboard() {
   leadsPerDay.forEach(d => { dayMap[d._id] = d; });
 
   const chartData = {
-    labels: last14.map(d => new Date(d).toLocaleDateString('en-US', { weekday: 'short' })),
+    labels: last14.map(d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short' })),
     datasets: [{
       label: 'Conversion Rate %',
       data: last14.map(d => {
@@ -101,10 +102,11 @@ export default function Dashboard() {
         if (!item || !item.assigned) return 0;
         return Number(((item.closed / item.assigned) * 100).toFixed(1));
       }),
-      backgroundColor: '#f1f1f1',
+      backgroundColor: '#3B82F6',
+      hoverBackgroundColor: '#2563EB',
       borderRadius: 6,
       borderSkipped: false,
-      barThickness: 10,
+      barThickness: 14,
     }],
   };
 

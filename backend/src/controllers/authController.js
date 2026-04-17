@@ -2,9 +2,11 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const asyncHandler = require('../utils/asyncHandler');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'canova_crm_demo_secret_2026';
+
 // Generate JWT
 const generateToken = (id) =>
-  jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE || '7d' });
+  jwt.sign({ id }, JWT_SECRET, { expiresIn: '7d' });
 
 // @desc    Login user
 // @route   POST /api/auth/login

@@ -4,8 +4,8 @@ import { login, getMe } from '../api/index.js';
 const AuthContext = createContext(null);
 
 // Admin credentials from .env seed
-const ADMIN_EMAIL    = 'admin@canovacrm.com';
-const ADMIN_PASSWORD = 'password';
+const ADMIN_EMAIL    = 'admin@salescrm.com';
+const ADMIN_PASSWORD = 'Admin@123';
 
 export function AuthProvider({ children }) {
   const [ready, setReady] = useState(false);
@@ -19,8 +19,8 @@ export function AuthProvider({ children }) {
         const res = await login({ email: ADMIN_EMAIL, password: ADMIN_PASSWORD });
         localStorage.setItem('crm_token', res.data.token);
         setReady(true);
-      } catch {
-        setError('Cannot connect to backend. Make sure the server is running on port 5000.');
+      } catch (err) {
+        setError(`Cannot connect to backend: ${err.message || 'Server error'}`);
         setReady(true); // still render, pages will show API errors
       }
     };
